@@ -34,5 +34,8 @@ ainsi qu'un service php dans le même réseau dédié avec présentation de fich
 Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS intégré : les conteneur peuvent se joindre par leur nom de conteneur sur leur réseau
 
 1. Télécharger l'image php : phpdockerio/php73-fpm
-2. Préparer les fichiers de configuration (nginx.conf et index.php) sur le docker host
-3. Instancier les deux conteneur avec les options nécessaires
+2. Détruire le conteneur de l'exercice 1
+3. Préparer les fichiers de configuration (nginx.conf et index.php) sur le docker host
+4. Instancier les deux conteneur avec les options nécessaires
+==> web01
+==> php01
