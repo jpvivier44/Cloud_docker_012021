@@ -118,7 +118,7 @@ Le but de cet exercice est de créer un container en exposant un port sur la mac
 1. Lancez un container basé sur nginx et publiez le port 80 du container sur le port 8080 de
 l’hôte
 2. Vérifiez depuis votre navigateur que la page par défaut de nginx est servie sur
-http://localhost:8080
+http://{IP_DOCKER_HOTE}:8080
 3. Lancez un second container en publiant le même port
 Qu’observez-vous ?
 
