@@ -1,6 +1,6 @@
 # TP Docker : Présentation des network et des volumes
 
-**Exercice 1 : Service Web + présentation données de configuration
+**Exercice 1 : Service Web + présentation données de configuration**
 Le but de cet exercice est lancer un service nginx avec un réseau dédié et une configuration présentée
 1. Préparer le fichier de configuration à présenter au conteneur nginx
 2. Creer un network dédié à notre application de type bridge nommé tp3_network
@@ -27,3 +27,12 @@ Le but de cet exercice est lancer un service nginx avec un réseau dédié et un
 
 ```$ docker container run -d --name web01 --network tp3_network -p 8080:80 -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/index.html:/usr/share/nginx/html/index.html nginx```
 
+
+**Exercice 2 : Service Web + PHP**
+Le but de cet exercice est lancer un service nginx avec un réseau dédié et une configuration présentée
+ainsi qu'un service php dans le même réseau dédié avec présentation de fichier code php
+Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS intégré : les conteneur peuvent se joindre par leur nom de conteneur sur leur réseau
+
+1. Télécharger l'image php : phpdockerio/php73-fpm
+2. Préparer les fichiers de configuration (nginx.conf et index.php) sur le docker host
+3. Instancier les deux conteneur avec les options nécessaires
