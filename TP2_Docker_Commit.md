@@ -37,6 +37,7 @@ Nous pourrons ensuite l'utiliser avec des nouveaux conteneurs qui de fait possed
 3. Lancer la commande pour faire un commit à partir de ce conteneur en spécifiant un nouveau nom d'image + Tag
 4. Vérifier en listant les images
 5. Vérifier le comportement en instanciant un nouveau conteneur à partir de cette nouvelle image
+6. On peut voir le contenu (au sens layers ) et voir toute la conf au sens objet image docker via les commandes "history" et "inspect"
 
 #### Correction de l'exercice 2
 1. Sortir du conteneur : celui-ci sera stoppé mais pas supprimé donc pas encore du suppression des données dans la docker area
@@ -58,3 +59,9 @@ Nous pourrons ensuite l'utiliser avec des nouveaux conteneurs qui de fait possed
 5. Instancier un nouveau conteneur depuis la nouvelle image
 
 ```$ docker container run -it --name new_alpine_curl alpine_curl:1.0```
+
+6. Détails
+
+```$ docker image history alpine_curl:1.0```
+
+```$ docker image inspect alpine_curl:1.0```
