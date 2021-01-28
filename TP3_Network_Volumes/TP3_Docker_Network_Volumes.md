@@ -37,12 +37,12 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 2. Détruire le conteneur de l'exercice 1
 3. Préparer les fichiers de configuration (nginx.conf et index.php) sur le docker host
 4. Instancier les deux conteneur avec les options nécessaires
-==> web01
-==> php01
-==> Bind des fichier de conf :
-        => nginx : /etc/nginx/conf.d/nginx.conf
+    - web01
+    - php01
+    - Bind des fichier de conf :
+        - nginx : /etc/nginx/conf.d/nginx.conf
                    /usr/share/nginx/html/index.html
-        => php : /srv/http/index.php
+        - php   : /srv/http/index.php
 
 
 #### Correction de l'exercice 2
@@ -120,18 +120,18 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 1. Nettoyage complet des conteneur du projet : suppression container, volumes
 2. Préparer le fichier d'initialisation de base : init.sql
 3. Création d'un volume docker pour héberger la nouvelle base
-==> tp3_vol_bdd
+    - tp3_vol_bdd
 4. Instancier correctement le conteneur :
-    ==> name : bdd01
-    ==> network: tp3_network
-    ==> variable d'environnement : MYSQL_ROOT_PASSWORD
-    ==> bind du fichier sql: /chemin_complet/init.sql vers /docker-entrypoint-initdb.d
-    ==> monter le volume tp3_vol_bdd vers /var/lib/mysql/
-    ==> image de référence : mariadb:10.5
+    - name : bdd01
+    - network: tp3_network
+    - variable d'environnement : MYSQL_ROOT_PASSWORD
+    - bind du fichier sql: /chemin_complet/init.sql vers /docker-entrypoint-initdb.d
+    - monter le volume tp3_vol_bdd vers /var/lib/mysql/
+    - image de référence : mariadb:10.5
 5. Modifier le fichier index.php pour qu'il tente de se connecter à la bdd
 6. Recreer le conteneur php01 puis le conteneur web01
 7. Tester le site web 
-    ==> Il va y avoir un pb avec l'image php (manque package php7.3-mysql)
+    - Il va y avoir un pb avec l'image php (manque package php7.3-mysql)
 
 ==> Aborder les Dockerfile
 
