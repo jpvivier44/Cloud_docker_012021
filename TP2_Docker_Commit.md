@@ -33,8 +33,28 @@ Pour installer un package, comme curl , nous utilisons la commande suivante apk 
 Le but de cet exercice est de créer une nouvelle image alpine avec prise en compte des modifs précédentes
 Nous pourrons ensuite l'utiliser avec des nouveaux conteneurs qui de fait possederont le package voulu
 1. Sortie du conteneur précédent
-2. Lancer la commande pour faire un commit à partir de ce conteneur en spécifiant un nouveau nom d'image + Tag
-3. Vérifier en listant les images
-4. Vérifier le comportement en instanciant un nouveau conteneur à partir de cette nouvelle image
+2. Utiliser la commande "diff" pour visualiser les données différentes (ajout, modif, suppression) par rapport à l'image de référence
+3. Lancer la commande pour faire un commit à partir de ce conteneur en spécifiant un nouveau nom d'image + Tag
+4. Vérifier en listant les images
+5. Vérifier le comportement en instanciant un nouveau conteneur à partir de cette nouvelle image
 
 #### Correction de l'exercice 2
+1. Sortir du conteneur : celui-ci sera stoppé mais pas supprimé donc pas encore du suppression des données dans la docker area
+
+```$ exit```
+
+2. Commande diff
+
+```$ docker container diff alpine_curl```
+
+3. Commande commit 
+
+```$ docker container commit -a "Pierre" -m "Ajout package curl" alpine_curl alpine_curl:1.0```
+
+4. Lister les images :
+
+```$ docker image ls```
+
+5. Instancier un nouveau conteneur depuis la nouvelle image
+
+```$ docker container run -it --name new_alpine_curl alpine_curl:1.0```
