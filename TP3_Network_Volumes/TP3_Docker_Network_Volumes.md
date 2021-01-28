@@ -71,7 +71,9 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 **Exercice 3 : Découverte d'une image mariadb**
 1. Télécharger l'image mariadb
 2. Instancier un conteneur à partir de cette image
-3. Se connecter dans le conteneur pour lancer la commande "mysql -u root -p"
+3. Utiliser exec pour se connecter au serveur : commande "mysql -u root -p"
+4. Creer une nouvelle database
+5. Quitter et détruire le conteneur
 
 #### Correction de l'exercice 3
 1. Télécharger l'image mariadb
@@ -81,3 +83,17 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 2. Instanciation
 
 ```$ docker run --name test-mariadb -e MYSQL_ROOT_PASSWORD=roottoor -d mariadb```
+
+3. Commande exec :
+
+```$ docker container exec -it test-mariadb mysql -u root -p```
+
+4. Creation database
+
+```CREATE DATABASE formation;```
+
+```show databases;```
+
+5. Sortie + rm
+
+```$ docker container rm -f test-mariadb```
