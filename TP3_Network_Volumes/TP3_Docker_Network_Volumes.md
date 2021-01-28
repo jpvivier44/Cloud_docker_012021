@@ -39,7 +39,30 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 4. Instancier les deux conteneur avec les options nécessaires
 ==> web01
 ==> php01
-=> Bind des fichier de conf :
+==> Bind des fichier de conf :
         => nginx : /etc/nginx/conf.d/nginx.conf
                    /usr/share/nginx/html/index.html
         => php : /srv/http/index.php
+
+
+#### Correction de l'exercice 2
+
+1. Pull de l'image :
+
+```$ docker pull phpdockerio/php73-fpm```
+
+2. Clean
+
+```$ docker container rm -f web01```
+
+3. Preparation des fichiers
+
+4. Instancier :
+
+    - 4.1 : Conteneur php
+    
+        ```$ docker container run -d --name php01 --network tp3_network -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/index.php:/srv/http/index.php phpdockerio/php73-fpm```
+
+    - 4.2 : Conteneur nginx
+
+        ```$ docker container run -d --name web01 --network tp3_network -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/nginx.conf:/etc/nginx/conf.d/nginx.conf -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/index.html:/usr/share/nginx/html/index.html -p 8080:80 nginx```
