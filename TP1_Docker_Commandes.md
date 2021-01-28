@@ -71,11 +71,15 @@ Le but de cet exercice est de créer des containers en foreground et en backgrou
 Le container est t-il toujours en cours d’exécution ?
 Note: vous pouvez utiliser la command docker ps que nous détaillerons dans l'une des
 prochaines lectures), et qui permet de lister les containers qui tournent sur la machine.
+
 3. Lancez un container en mode interactif en lui spécifiant la command ping 8.8.8.8
 4. Arrêter l'output avec CTRL-P CTRL-Q
 Le container est t-il toujours en cours d’exécution ?
 5. Lancez un container en background, toujours en lui spécifiant la command ping 8.8.8.8
 Le container est t-il toujours en cours d’exécution ?
+6. Vérifier l'output d'un conteneur en background
+7. Lancer un conteneur en background + interactif + tty
+8. Se connecter dans un conteneur déjà démarré (en background) 
 
 #### Correction de l'exercice 3
 1. Le container peut être lancé avec la commande suivante :
@@ -93,6 +97,19 @@ Le container continue à tourner. Il est listé avec la commande docker ps
 ```docker container run -d alpine ping 8.8.8.8```
 La commande docker ps permet de voir que le container tourne, il n'est simplement pas
 attaché au terminal depuis lequel il a été lancé.
+
+6. Vérifier l'output d'un conteneur en background
+
+```$ docker container logs -f alpine_ping3```
+
+7. Lancer un conteneur en background + interactif + tty
+
+```$ docker container run -d -it ubuntu```
+
+8. Se connecter dans un conteneur déjà démarré (en background)
+/!\ : Attention bannir la commande ATTACH /!\ => risque d'interruption du processus dans le conteneur
+
+```$ docker container exec -it alpine_curl /bin/sh```
 
 
 
