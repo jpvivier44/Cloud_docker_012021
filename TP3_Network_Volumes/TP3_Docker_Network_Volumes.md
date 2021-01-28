@@ -39,3 +39,7 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 4. Instancier les deux conteneur avec les options nécessaires
 ==> web01
 ==> php01
+=> Bind des fichier de conf :
+        => nginx : /etc/nginx/conf.d/nginx.conf
+                   /usr/share/nginx/html/index.html
+        => php : /srv/http/index.php
