@@ -74,6 +74,9 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 3. Utiliser exec pour se connecter au serveur : commande "mysql -u root -p"
 4. Creer une nouvelle database
 5. Quitter et détruire le conteneur
+6. Utilisation d'un volume au sens objet docker (docker volume ls)
+7. Instanciation d'un conteneur en utilisant le volume créé précédemment
+8. On peut refaire l'exercice de création de database, puis supprimer le conteneur puis le recréer en prenant soint de spécifier le volume d'origine
 
 #### Correction de l'exercice 3
 1. Télécharger l'image mariadb
@@ -86,7 +89,7 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 
 3. Commande exec :
 
-```$ docker container exec -it test-mariadb mysql -u root -p```
+```$  docker container exec -it test-mariadb mysql -u root -proottoor```
 
 4. Creation database
 
@@ -97,3 +100,38 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 5. Sortie + rm
 
 ```$ docker container rm -f test-mariadb```
+
+6. Creation volume
+
+```$ docker volume create tp3_volume```
+
+7. Instanciation
+
+```$ docker run -v tp3_volume:/var/lib/mysql --name test-mariadb-vol -e MYSQL_ROOT_PASSWORD=roottoor -d mariadb```
+
+8. On peut refaire l'exercice de création de database, puis supprimer le conteneur puis le recréer en prenant soint de spécifier le volume d'origine
+
+```$ docker container rm -f test-mariadb-vol```
+
+```$ docker run -v tp3_volume:/var/lib/mysql --name test-mariadb-vol -e MYSQL_ROOT_PASSWORD=roottoor -d mariadb```
+
+
+**Exercice 4 : Instanciation d'un conteneur maraidb dans le projet tp3**
+1. Nettoyage complet des conteneur du projet : suppression container, volumes
+2. Préparer le fichier d'initialisation de base : init.sql
+3. Création d'un volume docker pour héberger la nouvelle base
+==> tp3_vol_bdd
+4. Instancier correctement le conteneur :
+    ==> name : bdd01
+    ==> network: tp3_network
+    ==> variable d'environnement : MYSQL_ROOT_PASSWORD
+    ==> bind du fichier sql: /chemin_complet/init.sql vers /docker-entrypoint-initdb.d
+    ==> monter le volume tp3_vol_bdd vers /var/lib/mysql/
+    ==> image de référence : mariadb:10.5
+5. Modifier le fichier index.php pour qu'il tente de se connecter à la bdd
+6. Recreer le conteneur php01 puis le conteneur web01
+7. Tester le site web 
+    ==> Il va y avoir un pb avec l'image php (manque package php7.3-mysql)
+
+==> Aborder les Dockerfile
+
