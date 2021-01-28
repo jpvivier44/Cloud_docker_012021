@@ -26,3 +26,4 @@ Le but de cet exercice est lancer un service nginx avec un réseau dédié et un
 3. Instancier un conteneur nommé web01 dans le network précedemment créé, avec publication de port et avec bind du fichier de configuration index.html vers /usr/share/nginx/html/index.html en mode détaché
 
 ```$ docker container run -d --name web01 --network tp3_network -p 8080:80 -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/index.html:/usr/share/nginx/html/index.html nginx```
+
