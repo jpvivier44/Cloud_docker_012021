@@ -66,3 +66,18 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
     - 4.2 : Conteneur nginx
 
         ```$ docker container run -d --name web01 --network tp3_network -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/nginx.conf:/etc/nginx/conf.d/nginx.conf -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/index.html:/usr/share/nginx/html/index.html -p 8080:80 nginx```
+
+
+**Exercice 3 : Découverte d'une image mariadb**
+1. Télécharger l'image mariadb
+2. Instancier un conteneur à partir de cette image
+3. Se connecter dans le conteneur pour lancer la commande "mysql -u root -p"
+
+#### Correction de l'exercice 3
+1. Télécharger l'image mariadb
+
+```$ docker image pull mariadb```
+
+2. Instanciation
+
+```$ docker run --name test-mariadb -e MYSQL_ROOT_PASSWORD=roottoor -d mariadb```
