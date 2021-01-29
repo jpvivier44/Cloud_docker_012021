@@ -2,6 +2,7 @@
 # Bloc services : contient la liste des conteneur à instancier
 services:
   nginx:
+    container_name: nginx01
     image: nginx:1.19
     ports:
       - "8085:80"
@@ -10,6 +11,7 @@ services:
   
   # Commentaire
   apache:
+    container_name: apache01
     image: httpd
     ports:
       - "8086:80"

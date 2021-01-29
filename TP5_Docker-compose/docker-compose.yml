@@ -1,0 +1,34 @@
+services:
+  web01:
+    image: nginx:1.18
+    ports:
+      - "8080:80"
+    networks:
+      - tp3_network
+    volumes:
+      - ./conf/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ./conf/index.html:/usr/share/nginx/html/index.html
+
+  php01:
+    image: php7.3-fpm-mysql:1.0
+    networks:
+      - tp3_network
+    volumes:
+      - ./conf/index.php:/srv/http/index.php
+
+  bdd01:
+    image: mariadb:10.5
+    networks:
+      - tp3_network
+    volumes:
+      - ./conf_bdd/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - tp3_vol_bdd:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: roottoor
+    mem_limit: 512M
+
+networks:
+  tp3_network:
+
+volumes:
+  tp3_vol_bdd:
