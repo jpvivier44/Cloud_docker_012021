@@ -165,3 +165,9 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 ```$ docker container run -d --name php01 --network tp3_network -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/index.php:/srv/http/index.php phpdockerio/php73-fpm```
 
 ```$ docker container run -d --name web01 --network tp3_network -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/nginx.conf:/etc/nginx/conf.d/nginx.conf -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/index.html:/usr/share/nginx/html/index.html -p 8080:80 nginx```
+
+7. Effectivement :  [message:protected] => could not find driver
+    - Le conteneur php01 n'a pas le module mysql
+    - On se connecte dans le conteneur :
+    
+    ```docker container exec -it php01 /bin/bash```
