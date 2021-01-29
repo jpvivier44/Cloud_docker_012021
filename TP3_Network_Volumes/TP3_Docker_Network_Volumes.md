@@ -125,7 +125,7 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
     - name : bdd01
     - network: tp3_network
     - variable d'environnement : MYSQL_ROOT_PASSWORD
-    - bind du fichier sql: /chemin_complet/init.sql vers /docker-entrypoint-initdb.d/init.sql
+    - bind du fichier sql: /chemin_complet/init.sql vers /docker/docker-entrypoint-initdb.d/init.sql
     - monter le volume tp3_vol_bdd vers /var/lib/mysql/
     - image de référence : mariadb:10.5
 5. Modifier le fichier index.php pour qu'il tente de se connecter à la bdd
@@ -150,4 +150,9 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 
 3. Création volume
 
+```$ docker volume create tp3_vol_bdd```
+```$ docker volume ls```
+
 4. Instanciation du conteneur bdd01
+
+```$ docker container run -d --network tp3_network --name bdd01 -e MYSQL_ROOT_PASSWORD=roottoor -v /home/pierre/formation_docker/TP3_Network_Volumes/conf_bdd/init.sql:/docker-entrypoint-initdb.d/init.sql -v tp3_vol_bdd:/var/lib/mysql mariadb:10.5```
