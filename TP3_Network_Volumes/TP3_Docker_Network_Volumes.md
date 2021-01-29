@@ -168,6 +168,18 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 
 7. Effectivement :  [message:protected] => could not find driver
     - Le conteneur php01 n'a pas le module mysql
-    - On se connecte dans le conteneur :
+    - On se connecte dans le conteneur, on installe le package et on restart le conteneur :
+
+    ```
+    $ docker container exec -it php01 /bin/bash
+       root@041f314e9d48:/# apt update
+       root@041f314e9d48:/# apt install php7.3-mysql
+       root@041f314e9d48:/# exit
+    $ docker container restart php01
+    ```
     
-    ```docker container exec -it php01 /bin/bash```
+    - Réalisation d'un commit de secours pour conserver mon changement
+
+    ```$ docker container commit -a "Pierre" -m "Ajout du package php7.3-mysql" php01 php7.3-fpm-mysql:1.0```
+
+    - Maintenant pour instancier le conteneur php01 on utilisera l'image php7.3-fpm-mysql:1.0
