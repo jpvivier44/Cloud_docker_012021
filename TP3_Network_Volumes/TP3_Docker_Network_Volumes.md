@@ -132,8 +132,9 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 6. Recreer le conteneur php01 puis le conteneur web01
 7. Tester le site web 
     - Il va y avoir un pb avec l'image php (manque package php7.3-mysql)
-
-==> Aborder les Dockerfile
+    - On peut déjà installer le package php7.3-mysql dans le conteneur php01 pour tester
+        - redémarrarer le conteneur php01
+    - On peut commiter le changement dans une nouvelle image
 
 
 #### Correction de l'exercice 4
@@ -143,6 +144,7 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 ```$ docker container stop web01 php01```
 ```$ docker container rm web01 php01```
 ```$ docker volume rm tp3_vol_bdd```
+```$ docker container prune```
 
 2. Fichier init.sql => le créer dans un répertoire du projet TP3
 
