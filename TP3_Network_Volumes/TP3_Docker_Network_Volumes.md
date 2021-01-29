@@ -154,6 +154,7 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 ```$ docker volume ls```
 
 4. Instanciation du conteneur bdd01
+/!\ : Si on veut que le init.sql soit pris en compte, le volume tp3_vol_bdd doit être vide (suppression du volume et recréation)
 
 ```$ docker container run -d --network tp3_network --name bdd01 -e MYSQL_ROOT_PASSWORD=roottoor -v /home/pierre/formation_docker/TP3_Network_Volumes/conf_bdd/init.sql:/docker-entrypoint-initdb.d/init.sql -v tp3_vol_bdd:/var/lib/mysql mariadb:10.5```
 
