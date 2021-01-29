@@ -156,3 +156,11 @@ Nous verrons ainsi que le réseau dédié met en place un mécanisme de DNS int�
 4. Instanciation du conteneur bdd01
 
 ```$ docker container run -d --network tp3_network --name bdd01 -e MYSQL_ROOT_PASSWORD=roottoor -v /home/pierre/formation_docker/TP3_Network_Volumes/conf_bdd/init.sql:/docker-entrypoint-initdb.d/init.sql -v tp3_vol_bdd:/var/lib/mysql mariadb:10.5```
+
+5. Modif du contenu du fichier index.php
+
+6. Instanciation des deux conteneur php01 et web01
+
+```$ docker container run -d --name php01 --network tp3_network -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/index.php:/srv/http/index.php phpdockerio/php73-fpm```
+
+```$ docker container run -d --name web01 --network tp3_network -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/nginx.conf:/etc/nginx/conf.d/nginx.conf -v /home/pierre/formation_docker/TP3_Network_Volumes/conf/index.html:/usr/share/nginx/html/index.html -p 8080:80 nginx```
